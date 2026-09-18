@@ -2,6 +2,7 @@ import argparse
 import os
 import subprocess
 from pathlib import Path
+import sys
 
 import boto3
 import requests
@@ -10,7 +11,7 @@ import requests
 # This prevents large pull requests and using excessive tokens 
 MAX_DIFF_BYTES = 100 * 1024
 
-# Use the model supplied by yhe env variable 
+# Use the model supplied by the env variable 
 # Otherwise default to the lower cost Claude Haiku Model 
 MODEL_ID = os.getenv(
     "BEDROCK_MODEL_ID",
@@ -54,7 +55,7 @@ def run_git(*args):
     )
     return result.stdout
 
-# Reeturn true if a changed file should not be sent for AI reviewer
+# eeturn true if a changed file should not be sent for AI reviewer
 # If it contains name matching those in SKIP_FILENAMES
 def should_skip(filename):
     path = Path(filename)
@@ -77,7 +78,7 @@ def get_diff(diff_ref):
         "--",
     ).splitlines()
 
-    # Store valid code diffsa nd keep track of files intentionally skipped
+    # Store valid code diffs and keep track of files intentionally skipped
     chunks = []
     skipped = []
     total_bytes = 0
@@ -130,7 +131,11 @@ def call_bedrock(diff):
     client = session.client("bedrock-runtime")
 
     # Load the code review instructions seaprately
-    system_prompt = Path("prompt.md").read_text()
+    try: 
+        system_prompt = Path("prompt.md").read_text()
+    except FileNotFoundError:
+         print("Error: prompt.md not found", file=sys.stderr)
+         sys.exit(1)
 
     # Send the review instructions as the system message and Git diff as the user message
     response = client.converse(
