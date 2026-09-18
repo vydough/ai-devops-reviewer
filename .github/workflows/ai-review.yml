@@ -21,7 +21,7 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install -r requirements.txt
-      - run: python reviewer/review.py --diff-ref "origin/${BASE_REF}...HEAD"
+      - run: python review.py --diff-ref "origin/${BASE_REF}...HEAD"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
