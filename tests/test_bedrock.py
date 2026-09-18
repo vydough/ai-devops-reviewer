@@ -8,7 +8,7 @@ session = boto3.Session(
 client = session.client("bedrock-runtime")
 
 response = client.converse(
-    modelId="global.anthropic.claude-haiku-4-5-20251001-v1:0",
+    modelId="global.anthropic.claude-sonnet-4-6",
     messages=[{
         "role": "user",
         "content": [{"text": "Explain what a pull request is in one sentence."}]
