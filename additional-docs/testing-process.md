@@ -19,7 +19,7 @@ tested independently.
 Each test branch contained deliberately flawed code and was opened as a
 pull request into `main`.
 
-![Testing PR Creation](images/test-pr-creation-process)
+![Testing PR Creation](images/test-pr-creation-process.png)
 
 ---
 
@@ -36,8 +36,8 @@ The reviewer should identify:
 - exposed credentials
 - possible SQL injection
 
-![Test 1 - Security Issue Planted In sample_app](images/test-1-security-review)
-![Test 1 - Security Issue Planted In sample_app](images/test-1-additional-findings)
+![Test 1 - Security Issue Planted In sample_app](images/test-1-security-review.png)
+![Test 1 - Security Issue Planted In sample_app](images/test-1-security-additional-findings.png)
   
 ---
 
@@ -56,7 +56,7 @@ The reviewer should identify:
 - Recommend using try-except blocks or clearly documenting
 - Recommend that caller must handle exceptions
 
-![Test 2 - Reliability Issue Planted In sample_app](images/test-2-reliability-issue)
+![Test 2 - Reliability Issue Planted In sample_app](images/test-2-reliability-issue.png)
 
 ---
 
@@ -75,5 +75,5 @@ The reviewer should identify:
 - The potential performance impact for large inputs
 - A more efficient approach using a set or dictionary
 
-![Test 3 - Performance Issue Planted In sample_app](images/test-3-performance-issue)
+![Test 3 - Performance Issue Planted In sample_app](images/test-3-performance-issue.png)
 
