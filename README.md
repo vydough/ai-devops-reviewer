@@ -5,6 +5,8 @@ The purpose of this project was to streamline the workflow of reviewing code cha
 
 The goal is to demonstrate a practical DevOps workflow that combines CI/CD automation, cloud authentication, AWS, AI-assisted code reviews, secure AWS access, cost controls and repeatable testing. 
 
+![AI Code Reviewer Architecture Diagram](additional-docs/images/ai-devops-architecture.png)
+
 ## What it does
  
 When run against a pull request, the script:
